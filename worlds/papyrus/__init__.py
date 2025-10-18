@@ -6,11 +6,14 @@ from worlds.AutoWorld import World, WebWorld
 from .items import item_table, PapyrusItem, item_data_table
 from .locations import location_table, location_data_table
 from .options import PapyrusOptions
+from worlds.LauncherComponents import Component, components, Type, launch as launch_component
 
 
-class PapyrusLocation(Location):
-    game = "Papyrus"
+def launch_client():
+    from .Client import launch
+    launch_component(launch, name="Papyrus")
 
+components.append(Component("Papyrus Client", func=launch_client, component_type=Type.CLIENT))
 
 class PapyrusWebWorld(WebWorld):
     theme = "partyTime"
